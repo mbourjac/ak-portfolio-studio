@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { CharactersCountInput } from '../../components/CharactersCountInput';
 
 export const metadataFields = [
   defineField({
@@ -7,19 +8,30 @@ export const metadataFields = [
     type: 'string',
     description:
       "Following SEO best practices, the title shouldn't be longer than 70 characters.",
-    validation: (rule) => rule.max(70),
+    components: {
+      input: (props) => (
+        <CharactersCountInput {...props} charactersCount={70} />
+      ),
+    },
   }),
   defineField({
     name: 'description',
     title: 'Description',
     type: 'text',
-    validation: (rule) => rule.max(200),
+    description:
+      "Following SEO best practices, the description shouldn't be longer than 200 characters.",
+    components: {
+      input: (props) => (
+        <CharactersCountInput {...props} charactersCount={200} isTextArea />
+      ),
+    },
   }),
   defineField({
     name: 'ogImage',
     title: 'Open Graph Image',
     type: 'image',
-    description: 'Displayed on social cards and search engine results.',
+    description:
+      'This image will be displayed on social cards and search engine results.',
   }),
 ];
 
