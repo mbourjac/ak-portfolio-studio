@@ -1,4 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
+import { YoutubeVideoInput } from '../../components/YoutubeVideoInput/YoutubeVideoInput';
+import { getEmbedYoutubeUrl } from '../../components/YoutubeVideoInput/YoutubeVideoInput.utils';
 
 export const project = defineType({
   name: 'project',
@@ -68,6 +70,24 @@ export const project = defineType({
       type: 'image',
       description:
         'This image will be displayed on the home page. You can select an image that has already been uploaded to the gallery. If no cover is provided, the first image from the gallery will be used.',
+    }),
+    defineField({
+      name: 'videoUrl',
+      title: 'Youtube Video URL',
+      type: 'string',
+      components: {
+        input: YoutubeVideoInput,
+      },
+      validation: (rule) =>
+        rule.custom((videoUrl) => {
+          if (typeof videoUrl === 'undefined') {
+            return true;
+          }
+
+          return getEmbedYoutubeUrl(videoUrl)
+            ? true
+            : 'Please provide a valid youtube url.';
+        }),
     }),
   ],
   preview: {
