@@ -1,0 +1,4 @@
+.custom-color-annotation span {
+  border-bottom: none;
+  color: currentColor !important;
+}
