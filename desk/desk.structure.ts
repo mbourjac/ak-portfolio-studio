@@ -28,7 +28,12 @@ export const customStructure = (S: StructureBuilder) => {
       S.listItem()
         .title('Projects')
         .icon(DocumentsIcon)
-        .child(S.documentTypeList('project').title('Projects').showIcons()),
+        .child(
+          S.documentTypeList('project')
+            .title('Projects')
+            .showIcons()
+            .defaultOrdering([{ field: '_createdAt', direction: 'desc' }])
+        ),
       S.divider(),
       ...S.documentTypeListItems().filter(
         (listItem) =>
