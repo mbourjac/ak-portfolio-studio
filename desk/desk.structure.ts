@@ -1,25 +1,14 @@
 import { StructureBuilder } from 'sanity/desk';
-import { ControlsIcon, CogIcon, HomeIcon, DocumentsIcon } from '@sanity/icons';
+import { CogIcon, HomeIcon, DocumentsIcon } from '@sanity/icons';
 
 export const customStructure = (S: StructureBuilder) => {
   return S.list()
     .title('Content')
     .items([
       S.listItem()
-        .title('Site Settings')
-        .icon(ControlsIcon)
-        .child(
-          S.list()
-            .title('Site Settings')
-            .items([
-              S.listItem()
-                .title('Metadata')
-                .icon(CogIcon)
-                .child(
-                  S.document().schemaType('metadata').documentId('metadata')
-                ),
-            ])
-        ),
+        .title('Settings')
+        .icon(CogIcon)
+        .child(S.document().schemaType('settings').documentId('settings')),
       S.divider(),
       S.listItem()
         .title('Home Page')
@@ -37,7 +26,7 @@ export const customStructure = (S: StructureBuilder) => {
       S.divider(),
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !['metadata', 'homePage', 'project'].includes(
+          !['settings', 'homePage', 'project'].includes(
             listItem.getId() as string
           )
       ),

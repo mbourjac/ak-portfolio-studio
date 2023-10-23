@@ -1,0 +1,3 @@
+[data-testid='field-group-tabs'] > div:first-child {
+  display: none;
+}

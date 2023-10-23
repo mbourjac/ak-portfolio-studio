@@ -1,15 +1,7 @@
 import { richText } from './objects/rich-text';
-import { metadataObject } from './objects/metadata';
-import { metadata } from './singletons/metadata';
 import { homePage } from './singletons/home-page';
 import { project } from './documents/project';
 import { colorData } from './objects/color-data';
+import { settings } from './singletons/settings';
 
-export const schemaTypes = [
-  colorData,
-  richText,
-  metadataObject,
-  metadata,
-  homePage,
-  project,
-];
+export const schemaTypes = [colorData, richText, homePage, project, settings];

@@ -1,7 +1,7 @@
-import { defineField, defineType } from 'sanity';
-import { CharactersCountInput } from '../../components/CharactersCountInput';
+import { defineField } from 'sanity';
+import { CharactersCountInput } from '../../../components/CharactersCountInput';
 
-export const metadataFields = [
+export const seoFields = [
   defineField({
     name: 'title',
     title: 'Title',
@@ -34,16 +34,3 @@ export const metadataFields = [
       'This image will be displayed on social cards and search engine results.',
   }),
 ];
-
-export const metadataObject = defineType({
-  name: 'metadataObject',
-  title: 'Metadata',
-  description:
-    'The metadata fields provided for this page will take precedence over the globally defined ones.',
-  type: 'object',
-  options: {
-    collapsible: true,
-    collapsed: true,
-  },
-  fields: metadataFields,
-});

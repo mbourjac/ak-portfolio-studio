@@ -1,21 +1,29 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
 import { YoutubeVideoInput } from '../../components/YoutubeVideoInput/YoutubeVideoInput';
 import { getEmbedYoutubeUrl } from '../../components/YoutubeVideoInput/YoutubeVideoInput.utils';
+import { pageSeo } from '../objects/seo/page-seo';
 
 export const project = defineType({
   name: 'project',
   title: 'Project',
   type: 'document',
+  groups: [
+    {
+      default: true,
+      name: 'editorial',
+      title: 'Editorial',
+    },
+    {
+      name: 'seo',
+      title: 'SEO',
+    },
+  ],
   fields: [
-    defineField({
-      name: 'metadata',
-      title: 'Metadata',
-      type: 'metadataObject',
-    }),
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
+      group: 'editorial',
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -27,18 +35,21 @@ export const project = defineType({
         maxLength: 96,
         isUnique: (value, context) => context.defaultIsUnique(value, context),
       },
+      group: 'editorial',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'date',
       title: 'Date',
       type: 'string',
+      group: 'editorial',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'description',
       title: 'Description',
       type: 'richText',
+      group: 'editorial',
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -62,6 +73,7 @@ export const project = defineType({
       options: {
         layout: 'grid',
       },
+      group: 'editorial',
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -70,6 +82,7 @@ export const project = defineType({
       type: 'image',
       description:
         'This image will be displayed on the home page. You can select an image that has already been uploaded to the gallery. If no cover is provided, the first image from the gallery will be used.',
+      group: 'editorial',
     }),
     defineField({
       name: 'videoUrl',
@@ -78,6 +91,7 @@ export const project = defineType({
       components: {
         input: YoutubeVideoInput,
       },
+      group: 'editorial',
       validation: (rule) =>
         rule.custom((videoUrl) => {
           if (typeof videoUrl === 'undefined') {
@@ -89,6 +103,7 @@ export const project = defineType({
             : 'Please provide a valid youtube url.';
         }),
     }),
+    pageSeo,
   ],
   preview: {
     select: {
