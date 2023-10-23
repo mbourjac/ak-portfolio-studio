@@ -38,7 +38,7 @@ export const project = defineType({
     defineField({
       name: 'description',
       title: 'Description',
-      type: 'text',
+      type: 'richText',
       validation: (rule) => rule.required(),
     }),
     defineField({
