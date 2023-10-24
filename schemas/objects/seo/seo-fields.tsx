@@ -1,29 +1,22 @@
 import { defineField } from 'sanity';
-import { CharactersCountInput } from '../../../components/CharactersCountInput';
+import { SeoTitleInput } from '../../../components/SeoTitleInput';
+import { SeoDescriptionInput } from '../../../components/SeoDescriptionInput';
 
 export const seoFields = [
   defineField({
     name: 'title',
     title: 'Title',
     type: 'string',
-    description:
-      "Following SEO best practices, the title shouldn't be longer than 70 characters.",
     components: {
-      input: (props) => (
-        <CharactersCountInput {...props} charactersCount={70} />
-      ),
+      input: SeoTitleInput,
     },
   }),
   defineField({
     name: 'description',
     title: 'Description',
     type: 'text',
-    description:
-      "Following SEO best practices, the description shouldn't be longer than 200 characters.",
     components: {
-      input: (props) => (
-        <CharactersCountInput {...props} charactersCount={200} isTextArea />
-      ),
+      input: SeoDescriptionInput,
     },
   }),
   defineField({
