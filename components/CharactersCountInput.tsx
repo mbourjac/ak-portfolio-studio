@@ -5,6 +5,7 @@ import { FormEvent, useCallback } from 'react';
 type CharactersCountInputProps = StringInputProps<StringSchemaType> & {
   charactersCount: number;
   isTextArea?: boolean;
+  message?: string;
 };
 
 export const CharactersCountInput = ({
@@ -13,6 +14,7 @@ export const CharactersCountInput = ({
   onChange,
   charactersCount,
   isTextArea,
+  message,
 }: CharactersCountInputProps) => {
   const handleChange = useCallback(
     (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,6 +26,27 @@ export const CharactersCountInput = ({
 
   return (
     <Stack space={2}>
+      <Text
+        style={{
+          color: '#6e7683',
+          fontSize: '0.8125rem',
+          paddingBottom: '0.5rem',
+        }}
+      >
+        {message && (
+          <>
+            {message}
+            <br />
+          </>
+        )}
+        <span
+          style={{
+            color: value.length > charactersCount ? '#f03e2f' : '#6e7683',
+          }}
+        >
+          Character count: {value.length}.
+        </span>
+      </Text>
       {isTextArea ? (
         <TextArea
           {...elementProps}
@@ -34,15 +57,6 @@ export const CharactersCountInput = ({
       ) : (
         <TextInput {...elementProps} onChange={handleChange} value={value} />
       )}
-
-      <Text
-        style={{
-          color: value.length > charactersCount ? 'red' : 'black',
-          fontSize: '0.8125rem',
-        }}
-      >
-        Current characters count: {value.length}
-      </Text>
     </Stack>
   );
 };
