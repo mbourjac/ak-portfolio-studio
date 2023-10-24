@@ -1,11 +1,11 @@
 import { defineType } from 'sanity';
 import { siteSeo } from '../objects/seo/site-seo';
 
-const TITLE = 'Settings';
+const title = 'Settings';
 
 export const settings = defineType({
   name: 'settings',
-  title: TITLE,
+  title,
   type: 'document',
   groups: [
     {
@@ -18,7 +18,7 @@ export const settings = defineType({
   preview: {
     prepare() {
       return {
-        title: TITLE,
+        title,
       };
     },
   },
