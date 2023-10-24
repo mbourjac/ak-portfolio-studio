@@ -4,13 +4,15 @@ import { CharactersCountInput } from './CharactersCountInput';
 export const SeoDescriptionInput = (
   props: StringInputProps<StringSchemaType>
 ) => {
+  const charactersLimit = 160;
+
   return (
     <CharactersCountInput
       {...props}
-      charactersCount={180}
+      charactersCount={charactersLimit}
       isTextArea
-      message="The description shouldn't exceed 200 characters."
-      threshold={30}
+      message={`The description shouldn't exceed ${charactersLimit} characters.`}
+      threshold={20}
     />
   );
 };
