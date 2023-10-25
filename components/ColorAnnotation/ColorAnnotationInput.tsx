@@ -17,7 +17,7 @@ import {
 } from '@sanity/ui';
 import { ObjectInputProps, set } from 'sanity';
 import { ChromePicker, RGBColor } from 'react-color';
-import { ColorSchema, Color } from './ColorAnnotation.types';
+import type { ColorSchema, Color } from './ColorAnnotation.types';
 
 export const ColorAnnotationInput = ({
   value,
