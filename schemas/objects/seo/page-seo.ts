@@ -1,5 +1,4 @@
 import { defineField } from 'sanity';
-import { seoFields } from './seo-fields';
 
 export const pageSeo = defineField({
   name: 'seo',
@@ -7,6 +6,22 @@ export const pageSeo = defineField({
   type: 'object',
   description:
     'The metadata fields provided for this page will take precedence over the globally defined ones.',
-  fields: seoFields,
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'seo.title',
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'seo.description',
+    }),
+    defineField({
+      name: 'image',
+      title: 'Open Graph Image',
+      type: 'seo.image',
+    }),
+  ],
   group: 'seo',
 });

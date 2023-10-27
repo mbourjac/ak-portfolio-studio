@@ -1,5 +1,4 @@
 import { defineField } from 'sanity';
-import { seoFields } from './seo-fields';
 
 export const siteSeo = defineField({
   name: 'seo',
@@ -7,5 +6,23 @@ export const siteSeo = defineField({
   type: 'object',
   group: 'seo',
   description: 'Defaults for every page.',
-  fields: seoFields,
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'seo.title',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'seo.description',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'image',
+      title: 'Open Graph Image',
+      type: 'seo.image',
+    }),
+  ],
 });
