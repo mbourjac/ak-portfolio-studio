@@ -1,6 +1,6 @@
 import { ListItemBuilder, StructureBuilder } from 'sanity/desk';
 import { settingsItem } from './items/settings';
-import { homePageItem } from './items/home-page';
+import { homeItem } from './items/home';
 import { projectsItem } from './items/projects';
 
 const hiddenDocTypes = (listItem: ListItemBuilder) => {
@@ -10,7 +10,7 @@ const hiddenDocTypes = (listItem: ListItemBuilder) => {
     return false;
   }
 
-  return !['settings', 'homePage', 'project'].includes(id);
+  return !['settings', 'home', 'project'].includes(id);
 };
 
 export const structure = (S: StructureBuilder) => {
@@ -19,7 +19,7 @@ export const structure = (S: StructureBuilder) => {
     .items([
       settingsItem(S),
       S.divider(),
-      homePageItem(S),
+      homeItem(S),
       projectsItem(S),
       S.divider(),
       ...S.documentTypeListItems().filter(hiddenDocTypes),

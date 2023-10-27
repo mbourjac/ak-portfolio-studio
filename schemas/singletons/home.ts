@@ -2,8 +2,8 @@ import { defineArrayMember, defineField, defineType } from 'sanity';
 
 const title = 'Home';
 
-export const homePage = defineType({
-  name: 'homePage',
+export const home = defineType({
+  name: 'home',
   title,
   type: 'document',
   fields: [
