@@ -1,7 +1,7 @@
 import { defineField } from 'sanity';
 
-export const pageSeo = defineField({
-  name: 'seo',
+export const seoPage = defineField({
+  name: 'seo.page',
   title: 'SEO',
   type: 'object',
   description:

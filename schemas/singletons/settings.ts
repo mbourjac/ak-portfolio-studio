@@ -1,5 +1,4 @@
 import { defineField, defineType } from 'sanity';
-import { siteSeo } from '../objects/seo/site-seo';
 
 const title = 'Settings';
 
@@ -38,7 +37,12 @@ export const settings = defineType({
       type: 'richText',
       group: 'general',
     }),
-    siteSeo,
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo.app',
+      group: 'seo',
+    }),
   ],
   preview: {
     prepare() {

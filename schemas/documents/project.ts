@@ -1,7 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
 import { YoutubeVideoInput } from '../../components/YoutubeVideoInput/YoutubeVideoInput';
 import { getEmbedYoutubeUrl } from '../../components/YoutubeVideoInput/YoutubeVideoInput.utils';
-import { pageSeo } from '../objects/seo/page-seo';
 
 export const project = defineType({
   name: 'project',
@@ -103,7 +102,12 @@ export const project = defineType({
             : 'Please provide a valid youtube url.';
         }),
     }),
-    pageSeo,
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo.page',
+      group: 'seo',
+    }),
   ],
   preview: {
     select: {
